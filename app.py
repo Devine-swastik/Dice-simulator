@@ -1,17 +1,16 @@
 import os
-import random
 from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-# Route for rolling a dice
+@app.route('/')
+def home():
+    return "Welcome to the Dice Simulator!"
+
 @app.route('/roll', methods=['GET'])
 def roll_dice():
-    # Simulate rolling a 6-sided dice
-    dice_roll = random.randint(1, 6)
-    return jsonify({"result": dice_roll})
+    return jsonify({"result": 6})
 
-# Main entry point for the app
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # Use Render's PORT variable or 5000 locally
+    port = int(os.environ.get("PORT", 5000))  # Default to port 5000 if PORT is not set
     app.run(host="0.0.0.0", port=port)
