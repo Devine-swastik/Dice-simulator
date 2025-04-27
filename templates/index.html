@@ -44,9 +44,19 @@
 <div class="container">
     <div class="card text-center">
         <h1>🎲 Dice Roller 🎲</h1>
-        <h2 class="mt-4">You rolled a <span class="text-primary fw-bold">{{ dice }}</span></h2>
-        <a href="/" class="btn btn-primary mt-4">Roll Again 🔄</a>
+        <h2 class="mt-4">You rolled a <span id="diceValue" class="text-primary fw-bold">1</span></h2>
+        <button id="rollDice" class="btn btn-primary mt-4">Roll Again 🔄</button>
     </div>
 </div>
+<script>
+    // Function to roll the dice and update the value
+    function rollDice() {
+        const diceValue = Math.floor(Math.random() * 6) + 1; // Random number between 1-6
+        document.getElementById('diceValue').textContent = diceValue;
+    }
+
+    // Attach event listener to the button
+    document.getElementById('rollDice').addEventListener('click', rollDice);
+</script>
 </body>
 </html>
