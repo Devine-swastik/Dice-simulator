@@ -1,12 +1,12 @@
-from flask import Flask, render_template
 import os
+from flask import Flask
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default-secret-key')  # Load SECRET_KEY from environment variables
 
-@app.route('/')
+@app.route("/")
 def home():
-    return render_template('index.html')
+    return "Hello, World!"
 
-if __name__ == '__main__':
-    app.run(debug=os.getenv('FLASK_ENV') == 'development')
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # Default to 5000 if PORT is not set
+    app.run(host="0.0.0.0", port=port)
